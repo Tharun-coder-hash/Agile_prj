@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loan-eligibility-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: loan-eligibility
+
+  template:
+    metadata:
+      labels:
+        app: loan-eligibility
+
+    spec:
+      containers:
+      - name: loan-container
+        image: loan-eligibility:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
